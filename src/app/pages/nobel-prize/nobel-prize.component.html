@@ -1,0 +1,17 @@
+<br>
+
+<h1>Filter the Nobel List Data By</h1>
+<br>
+<div [style]="'padding:1%;'">
+    <select [(ngModel)]="selected_category" class="form-control select">
+        <option value="">Select Category</option>
+        <option *ngFor="let x of category_list">{{x}}</option>
+    </select>
+
+    <select [(ngModel)]="selected_year" class="select">
+         <option value="">Select Year</option>
+        <option *ngFor="let x of year_list">{{x}}</option>
+    </select>
+</div>
+<hr/>
+<app-laureate-list [laureate-list] = "nobel_data |filterLaureate : selected_category: selected_year" [isLoadingResults] = "isLoadingResults" [selected_category]="selected_category" [selected_year]="selected_year"></app-laureate-list>
